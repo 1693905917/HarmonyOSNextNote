@@ -121,14 +121,33 @@ struct Index {
   //构建→界面
   build() {
 
-    //svg
+    //Padding
     Column(){
-      //知识点1：图标命名：ic_*****
-      //知识点2：fillColor()只对svg有效果
-      Image($r('app.media.ic_late')).width(200).fillColor(Color.Orange)
-
-      Image($r('app.media.icon')).width(50)
+      Text("黄志鹏").backgroundColor(Color.Pink)
+        // .padding(50)//四个方向设置同样的内边距
+        .padding({
+          left:20,
+          top:30,
+          right:5,
+          bottom:30
+        })
+      Text('外边距margin')
+        .margin({
+          top: 10,
+          right: 20,
+          bottom: 40,
+          left: 80
+        }) // 四个方向外边距分别设
     }
+
+    // //svg
+    // Column(){
+    //   //知识点1：图标命名：ic_*****
+    //   //知识点2：fillColor()只对svg有效果
+    //   Image($r('app.media.ic_late')).width(200).fillColor(Color.Orange)
+    //
+    //   Image($r('app.media.icon')).width(50)
+    // }
 
     //华为登录
     // Column({space:15}){//控制Column内部组件间的距离，可以给Column设置{space:间隙大小}
