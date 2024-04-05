@@ -121,24 +121,69 @@ struct Index {
   //构建→界面
   build() {
     Column() {
-      // 1. 正圆 （头像）
-      Image($r('app.media.cat'))
-        .width(100)
-        .height(100)
-        .borderRadius(50)
-
-      // 2. 胶囊按钮 (左右半圆)
-      Text('今天还没打卡呦~')
-        .width(240)
-        .height(60)
-        .borderRadius(30)
+      Text()
+        .width('300vp')
+        .height('200vp')
         .backgroundColor(Color.Pink)
-        .margin({ top: 20 })
+        .backgroundImage($r('app.media.flower'))
+        .backgroundImagePosition({
+          x: vp2px(150),
+          y: vp2px(100)
+        })
     }
     .padding(20)
 
-    }
+  }
+
 }
+// backgroundImagePosition
+// 1. 传入对象, 设置位置坐标，背景图片的左顶点
+//    { x: 坐标值, y: 坐标值 }
+//    注意：坐标值的单位，和宽高的默认单位不同的，显示出来大小会不同
+//
+// 2. Alignment 枚举，设置一些特殊的位置（中央、左顶点...）
+//    Center  TopStart左顶点 TopEnd右顶点 BottomEnd右下...
+// Column() {
+//   Text()
+//     .width(300)
+//     .height(200)
+//     .backgroundColor(Color.Pink)
+//     .backgroundImage($r('app.media.flower'))
+//     .backgroundImagePosition({
+//       x: 400,
+//       y: 300
+//     })
+//     .backgroundImagePosition(Alignment.BottomEnd)
+// }
+// .padding(20)
+
+// Column() {
+//   Text('我是内容文本')
+//     .fontColor(Color.White)
+//     .width(300)
+//     .height(200)
+//     .backgroundColor(Color.Pink)
+//       // backgroundImage(加载的背景图片, 是否平铺ImageRepeat枚举)
+//     .backgroundImage($r('app.media.flower'), ImageRepeat.XY )
+// }
+// .padding(20)
+// Column() {
+//   // 1. 正圆 （头像）
+//   Image($r('app.media.cat'))
+//     .width(100)
+//     .height(100)
+//     .borderRadius(50)
+//
+//   // 2. 胶囊按钮 (左右半圆)
+//   Text('今天还没打卡呦~')
+//     .width(240)
+//     .height(60)
+//     .borderRadius(30)
+//     .backgroundColor(Color.Pink)
+//     .margin({ top: 20 })
+// }
+// .padding(20)
+// }
 //设置组件圆角
 // Column() {
 //   Text('没有圆角')
