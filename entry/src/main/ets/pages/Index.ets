@@ -120,21 +120,48 @@ struct Index {
   @State message: string = 'Hello World';
   //构建→界面
   build() {
+    Column() {
+      Text('待完善')
+        .fontColor(Color.Red)
+        .padding(5)
+        .border({
+          width: 1, // 宽度（必须）
+          color: Color.Red, // 颜色
+          style: BorderStyle.Dashed // 样式(实线、虚线、点线)
+        })
+        .margin({ bottom: 20 })
+
+      Text('单边框')
+        .padding(5)
+          // 单边框，可以通过 left right bottom top 配置四个方向边框
+        .border({
+          width: { left: 1, right: 2 },
+          color: { left: Color.Red, right: Color.Green },
+          style: {
+            left: BorderStyle.Dashed,
+            right: BorderStyle.Dotted
+          }
+        })
+    }
+    .padding(20)
+    }
+}
+
 
     //QQ音乐-登录
-    Column(){
-      Image($r('app.media.m_user')).width(100)
-      Text('大王叫我来巡山').fontWeight(700).margin({
-        top:10,
-        bottom:40
-      })
-      Button('QQ登录').width('100%').margin({
-        bottom:10
-      })
-
-      Button('微信登录').width('100%').backgroundColor('#ddd').fontColor('#000')
-    }.width('100%')
-    .padding(20)
+    // Column(){
+    //   Image($r('app.media.m_user')).width(100)
+    //   Text('大王叫我来巡山').fontWeight(700).margin({
+    //     top:10,
+    //     bottom:40
+    //   })
+    //   Button('QQ登录').width('100%').margin({
+    //     bottom:10
+    //   })
+    //
+    //   Button('微信登录').width('100%').backgroundColor('#ddd').fontColor('#000')
+    // }.width('100%')
+    // .padding(20)
 
     //Padding margin
     // Column(){
@@ -265,5 +292,3 @@ struct Index {
    //  // .backgroundColor(Color.Pink)
    //  //.width('100%') //以'%'来进行设置，则会依据父类组件的宽度来取百分比
    //  .width('100%')//根据数字来设置固定的宽度
-  }
-}
