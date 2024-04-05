@@ -122,20 +122,40 @@ struct Index {
   build() {
     Column() {
       Text()
-        .width('300vp')
-        .height('200vp')
+        .width(330)
+        .height(200)
         .backgroundColor(Color.Pink)
-        .backgroundImage($r('app.media.flower'))
-        .backgroundImagePosition({
-          x: vp2px(150),
-          y: vp2px(100)
-        })
+        .backgroundImage($r('app.media.jd_bg'))
+        .backgroundImagePosition(Alignment.Center)
+        .backgroundImageSize(ImageSize.Cover)
+
+      // 1. 直接写 宽高尺寸 对象
+      // .backgroundImageSize({
+      //   width: 150,
+      //   // height: 100
+      // })
+
+      // 2. 设置 背景尺寸 的枚举 ImageSize
+      // (1) Contain: 等比例缩放，展示整张图片，可能会留白
+      // (2) Cover: 等比例缩放，让图片铺满整个容器，不会留白，但是有可能会有部分内容显示不全
     }
-    .padding(20)
 
   }
 
 }
+
+// Column() {
+//   Text()
+//     .width('300vp')
+//     .height('200vp')
+//     .backgroundColor(Color.Pink)
+//     .backgroundImage($r('app.media.flower'))
+//     .backgroundImagePosition({
+//       x: vp2px(150),
+//       y: vp2px(100)
+//     })
+// }
+// .padding(20)
 // backgroundImagePosition
 // 1. 传入对象, 设置位置坐标，背景图片的左顶点
 //    { x: 坐标值, y: 坐标值 }
