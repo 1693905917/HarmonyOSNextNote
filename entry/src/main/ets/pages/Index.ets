@@ -121,17 +121,27 @@ struct Index {
   //构建→界面
   build() {
 
-    Column({space:15}){//控制Column内部组件间的距离，可以给Column设置{space:间隙大小}
-      Image($r('app.media.huawei')).width(60)
-      TextInput({placeholder:'请输入用户名'});
-      TextInput({placeholder:'请输入密码'}).type(InputType.Password);
-      Button('登录').width(200);
+    //svg
+    Column(){
+      //知识点1：图标命名：ic_*****
+      //知识点2：fillColor()只对svg有效果
+      Image($r('app.media.ic_late')).width(200).fillColor(Color.Orange)
 
-      Row({space:20}){
-        Text('前往注册');
-        Text('忘记密码');
-      }
-    }.padding(20)
+      Image($r('app.media.icon')).width(50)
+    }
+
+    //华为登录
+    // Column({space:15}){//控制Column内部组件间的距离，可以给Column设置{space:间隙大小}
+    //   Image($r('app.media.huawei')).width(60)
+    //   TextInput({placeholder:'请输入用户名'});
+    //   TextInput({placeholder:'请输入密码'}).type(InputType.Password);
+    //   Button('登录').width(200);
+    //
+    //   Row({space:20}){
+    //     Text('前往注册');
+    //     Text('忘记密码');
+    //   }
+    // }.padding(20)
 
 
     // Column({space:15}){//控制Column内部组件间的距离，可以给Column设置{space:间隙大小}
