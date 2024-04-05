@@ -121,24 +121,39 @@ struct Index {
   //构建→界面
   build() {
 
-    //Padding
+    //QQ音乐-登录
     Column(){
-      Text("黄志鹏").backgroundColor(Color.Pink)
-        // .padding(50)//四个方向设置同样的内边距
-        .padding({
-          left:20,
-          top:30,
-          right:5,
-          bottom:30
-        })
-      Text('外边距margin')
-        .margin({
-          top: 10,
-          right: 20,
-          bottom: 40,
-          left: 80
-        }) // 四个方向外边距分别设
-    }
+      Image($r('app.media.m_user')).width(100)
+      Text('大王叫我来巡山').fontWeight(700).margin({
+        top:10,
+        bottom:40
+      })
+      Button('QQ登录').width('100%').margin({
+        bottom:10
+      })
+
+      Button('微信登录').width('100%').backgroundColor('#ddd').fontColor('#000')
+    }.width('100%')
+    .padding(20)
+
+    //Padding margin
+    // Column(){
+    //   Text("黄志鹏").backgroundColor(Color.Pink)
+    //     // .padding(50)//四个方向设置同样的内边距
+    //     .padding({
+    //       left:20,
+    //       top:30,
+    //       right:5,
+    //       bottom:30
+    //     })
+    //   Text('外边距margin')
+    //     .margin({
+    //       top: 10,
+    //       right: 20,
+    //       bottom: 40,
+    //       left: 80
+    //     }) // 四个方向外边距分别设
+    // }
 
     // //svg
     // Column(){
