@@ -121,44 +121,48 @@ struct Index {
   //构建→界面
   build() {
     Column() {
-      // layoutWeight 自适应伸缩: 按照[份数权重]，分配[剩余空间]
-      Row() {
-        Text('左侧')
-          .layoutWeight(1)
-          .height(40)
-          .backgroundColor(Color.Pink)
-        Text('右侧固定')
-          .width(80)
-          .height(40)
-          .backgroundColor(Color.Orange)
-      }
-      .width(300)
-      .height(40)
-      .backgroundColor('#fff')
+      Column() {
+        Image($r('app.media.nick'))
+          .width('100%')
+          .borderRadius({
+            topLeft: 5,
+            topRight: 5
+          })
+        Text('今晚吃这个 | 每日艺术分享 No.43')
+          .fontWeight(600)
+          .fontSize(14)
+          .lineHeight(22)
+          .height(60)
 
-      Row() {
-        Text('老大')
+        // 底部
+        Row() {
+          // 头像、昵称
+          Row({ space: 5 }) {
+            Image($r('app.media.user'))
+              .width(16)
+              .borderRadius(8)
+            Text('插画师分享聚集地')
+              .fontSize(10)
+              .fontColor('#999')
+          }
           .layoutWeight(1)
-          .height(40)
-          .backgroundColor(Color.Gray)
-        Text('老二')
-          .layoutWeight(2)
-          .height(40)
-          .backgroundColor(Color.Orange)
-        Text('老三')
-          .layoutWeight(3)
-          .height(40)
-          .backgroundColor(Color.Pink)
-        Text('小宝')
-          .width(50)
-          .height(40)
-          .backgroundColor(Color.Brown)
-      }
-      .width(300)
-      .height(40)
-      .backgroundColor('#fff')
-      .margin({ top: 30 })
 
+          // 点赞图标、点赞数
+          Row({ space: 5}) {
+            Image($r('app.media.ic_like'))
+              .width(12)
+              .fillColor('#999')
+            Text('2300')
+              .fontSize(10)
+              .fontColor('#666')
+          }
+        }
+        .padding({ left: 15, right: 15 })
+      }
+      .width(200)
+      .padding({ bottom: 15 })
+      .backgroundColor(Color.White)
+      .borderRadius(5)
     }
     .padding(10)
     .width('100%')
@@ -167,6 +171,51 @@ struct Index {
   }
 
 }
+// Column() {
+//   // layoutWeight 自适应伸缩: 按照[份数权重]，分配[剩余空间]
+//   Row() {
+//     Text('左侧')
+//       .layoutWeight(1)
+//       .height(40)
+//       .backgroundColor(Color.Pink)
+//     Text('右侧固定')
+//       .width(80)
+//       .height(40)
+//       .backgroundColor(Color.Orange)
+//   }
+//   .width(300)
+//   .height(40)
+//   .backgroundColor('#fff')
+//
+//   Row() {
+//     Text('老大')
+//       .layoutWeight(1)
+//       .height(40)
+//       .backgroundColor(Color.Gray)
+//     Text('老二')
+//       .layoutWeight(2)
+//       .height(40)
+//       .backgroundColor(Color.Orange)
+//     Text('老三')
+//       .layoutWeight(3)
+//       .height(40)
+//       .backgroundColor(Color.Pink)
+//     Text('小宝')
+//       .width(50)
+//       .height(40)
+//       .backgroundColor(Color.Brown)
+//   }
+//   .width(300)
+//   .height(40)
+//   .backgroundColor('#fff')
+//   .margin({ top: 30 })
+//
+// }
+// .padding(10)
+// .width('100%')
+// .height('100%')
+// .backgroundColor('#ccc')
+
 //   Column() {
 //     Row() {
 //       // 左侧列
