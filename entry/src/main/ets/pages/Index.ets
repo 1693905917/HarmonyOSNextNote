@@ -120,30 +120,65 @@ struct Index {
   @State message: string = 'Hello World';
   //构建→界面
   build() {
-    // Column 交叉轴的对齐方式（水平往右）
-    // alignItems(HorizontalAlign.Start)  Center End
     Column() {
-      Text()
-        .width(200).height(100)
-        .backgroundColor(Color.Pink)
-        .border({ width: 2 })
-      Text()
-        .width(200).height(100)
-        .backgroundColor(Color.Pink)
-        .border({ width: 2 })
-        .margin({ top: 5, bottom: 5 })
-      Text()
-        .width(200).height(100)
-        .backgroundColor(Color.Pink)
-        .border({ width: 2 })
+      Row() {
+        // 左侧列
+        Column({ space: 8 }) {
+          Text('玩一玩')
+            .fontSize(18)
+            .fontWeight(700)
+          Text('签到兑礼 | 超多大奖 超好玩')
+            .fontSize(12)
+            .fontColor('#999')
+        }
+        .alignItems(HorizontalAlign.Start)
+        // 右侧行
+        Row({ space: 8 }) {
+          Image($r('app.media.tree'))
+            .width(50)
+            .backgroundColor('#efefef')
+            .borderRadius(5)
+          Image($r('app.media.ic_arrow_right'))
+            .width(20)
+            .fillColor('#999')
+        }
+      }
+      .justifyContent(FlexAlign.SpaceBetween)
+      .padding({ left: 15, right: 15 })
+      .width('100%')
+      .height(80)
+      .backgroundColor('#fff')
+      .borderRadius(5)
     }
-    .alignItems(HorizontalAlign.End)
+    .padding(10)
     .width('100%')
     .height('100%')
     .backgroundColor('#ccc')
   }
 
 }
+// // Column 交叉轴的对齐方式（水平往右）
+// // alignItems(HorizontalAlign.Start)  Center End
+// Column() {
+//   Text()
+//     .width(200).height(100)
+//     .backgroundColor(Color.Pink)
+//     .border({ width: 2 })
+//   Text()
+//     .width(200).height(100)
+//     .backgroundColor(Color.Pink)
+//     .border({ width: 2 })
+//     .margin({ top: 5, bottom: 5 })
+//   Text()
+//     .width(200).height(100)
+//     .backgroundColor(Color.Pink)
+//     .border({ width: 2 })
+// }
+// .alignItems(HorizontalAlign.End)
+// .width('100%')
+// .height('100%')
+// .backgroundColor('#ccc')
+
 // Column() {
 //   Row() {
 //     Image($r('app.media.ic_arrow_left'))
