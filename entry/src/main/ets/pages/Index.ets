@@ -122,28 +122,61 @@ struct Index {
   build() {
     Column() {
       Text()
-        .width(330)
-        .height(200)
+        .width(200).height(100)
         .backgroundColor(Color.Pink)
-        .backgroundImage($r('app.media.jd_bg'))
-        .backgroundImagePosition(Alignment.Center)
-        .backgroundImageSize(ImageSize.Cover)
-
-      // 1. 直接写 宽高尺寸 对象
-      // .backgroundImageSize({
-      //   width: 150,
-      //   // height: 100
-      // })
-
-      // 2. 设置 背景尺寸 的枚举 ImageSize
-      // (1) Contain: 等比例缩放，展示整张图片，可能会留白
-      // (2) Cover: 等比例缩放，让图片铺满整个容器，不会留白，但是有可能会有部分内容显示不全
+        .border({ width: 2 })
+      Text()
+        .width(200).height(100)
+        .backgroundColor(Color.Pink)
+        .border({ width: 2 })
+        .margin(5)
+      Text()
+        .width(200).height(100)
+        .backgroundColor(Color.Pink)
+        .border({ width: 2 })
+        .margin(5)
+      Text()
+        .width(200).height(100)
+        .backgroundColor(Color.Pink)
+        .border({ width: 2 })
     }
-
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#ccc')
+    // 设置排布主方向的对齐方式（主轴）
+    // 1. Start  （排布主方向）主轴起始位置对齐
+    // 2. Center  主轴居中对齐
+    // 3. End     主轴结束位置对齐
+    // 4. SpaceBetween 贴边显示，中间的元素均匀分布间隙
+    // 5. SpaceAround 间隙环绕  0.5  1  1  1  0.5 的间隙分布，靠边只有一半的间隙
+    // 6. SpaceEvenly 间隙均匀环绕，靠边也是完整的一份间隙
+    // justifyContent(枚举FlexAlign)  ctrl+p  cmd+p
+    // .justifyContent(FlexAlign.Center)
+    // .justifyContent(FlexAlign.SpaceBetween)
+    // .justifyContent(FlexAlign.SpaceAround)
+    .justifyContent(FlexAlign.SpaceEvenly)
   }
 
 }
-
+// Column() {
+//   Text()
+//     .width(330)
+//     .height(200)
+//     .backgroundColor(Color.Pink)
+//     .backgroundImage($r('app.media.jd_bg'))
+//     .backgroundImagePosition(Alignment.Center)
+//     .backgroundImageSize(ImageSize.Cover)
+//
+//   // 1. 直接写 宽高尺寸 对象
+//   // .backgroundImageSize({
+//   //   width: 150,
+//   //   // height: 100
+//   // })
+//
+//   // 2. 设置 背景尺寸 的枚举 ImageSize
+//   // (1) Contain: 等比例缩放，展示整张图片，可能会留白
+//   // (2) Cover: 等比例缩放，让图片铺满整个容器，不会留白，但是有可能会有部分内容显示不全
+// }
 // Column() {
 //   Text()
 //     .width('300vp')
