@@ -121,56 +121,160 @@ struct Index {
   //构建→界面
   build() {
     Column() {
-      Column() {
-        Image($r('app.media.nick'))
-          .width('100%')
-          .borderRadius({
-            topLeft: 5,
-            topRight: 5
-          })
-        Text('今晚吃这个 | 每日艺术分享 No.43')
-          .fontWeight(600)
-          .fontSize(14)
-          .lineHeight(22)
-          .height(60)
-
-        // 底部
-        Row() {
-          // 头像、昵称
-          Row({ space: 5 }) {
-            Image($r('app.media.user'))
-              .width(16)
-              .borderRadius(8)
-            Text('插画师分享聚集地')
-              .fontSize(10)
-              .fontColor('#999')
-          }
-          .layoutWeight(1)
-
-          // 点赞图标、点赞数
-          Row({ space: 5}) {
-            Image($r('app.media.ic_like'))
-              .width(12)
-              .fillColor('#999')
-            Text('2300')
-              .fontSize(10)
-              .fontColor('#666')
-          }
-        }
-        .padding({ left: 15, right: 15 })
+      // 顶部区域
+      Row() {
+        Image($r('app.media.jd_cancel'))
+          .width(20)
+        Text('帮助')
       }
-      .width(200)
-      .padding({ bottom: 15 })
-      .backgroundColor(Color.White)
-      .borderRadius(5)
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceBetween)
+
+      // Logo图标
+      Image($r('app.media.jd_logo'))
+        .width(250)
+        .height(250)
+
+      // 国家/地址 (自己画)
+      Row() {
+        Text('国家/地址')
+          .layoutWeight(1)
+          .fontColor('#666')
+        Text('中国(+86)')
+          .margin({ right: 5 })
+          .fontColor('#666')
+        Image($r('app.media.jd_right'))
+          .width(20)
+          .fillColor('#666')
+      }
+      .width('100%')
+      .height(40)
+      .backgroundColor('#fff')
+      .borderRadius(20)
+      .padding({ left: 15, right: 10 })
+
+      // 手机号（输入框）
+      TextInput({
+        placeholder: '请输入手机号'
+      })
+        .placeholderColor('#666')
+        .height(40)
+        .borderRadius(20)
+        .backgroundColor('#fff')
+        .margin({ top: 20 })
+
+      // 已阅读并同意
+      Row() {
+        Checkbox()
+          .width(10)
+          .margin({ top: 7 })
+        // 一段文本中，有文本样式需要单独定制，Text 包裹 Span
+        Text() {
+          Span('我已经阅读并同意')
+          Span('《京东隐私政策》').fontColor('#3274f6')
+          Span('《京东用户服务协议》').fontColor('#3274f6')
+          Span('未注册的手机号将自动创建京东账号')
+        }
+        .fontSize(12)
+        .fontColor('#666')
+        .lineHeight(20)
+      }
+      .alignItems(VerticalAlign.Top)
+      .margin({ top: 20 })
+
+      // 登录
+      Button('登录')
+        .width('100%')
+        .backgroundColor('#bf2838')
+        .margin({ top: 25 })
+
+      // 新用户注册等链接
+      Row({ space: 25 }) {
+        Text('新用户注册').fontSize(14).fontColor('#666')
+        Text('账户密码登录').fontSize(14).fontColor('#666')
+        Text('无法登录').fontSize(14).fontColor('#666')
+      }
+      .margin({ top: 15 })
+
+      // 填充组件；作用：填充空白区域 （像弹簧）
+      Blank()
+
+      // 底部其他登录方式
+      Column() {
+        Text('其他登录方式')
+          .fontColor('#666')
+          .height(22)
+          .fontSize(14)
+          .margin({ bottom: 28 })
+        Row() {
+          Image($r('app.media.jd_huawei')).width(34)
+          Image($r('app.media.jd_wechat')).width(34).fillColor('#56a44a')
+          Image($r('app.media.jd_weibo')).width(34).fillColor('#c8493b')
+          Image($r('app.media.jd_QQ')).width(34).fillColor('#4ba0e8')
+        }
+        .width('100%')
+        .margin({ bottom: 30 })
+        .justifyContent(FlexAlign.SpaceAround)
+      }
+      .width('100%')
     }
-    .padding(10)
+    .padding(20)
     .width('100%')
     .height('100%')
-    .backgroundColor('#ccc')
+    .backgroundImage($r('app.media.jd_login_bg'))
+    .backgroundImageSize(ImageSize.Cover)
+
   }
 
 }
+// Column() {
+//   Column() {
+//     Image($r('app.media.nick'))
+//       .width('100%')
+//       .borderRadius({
+//         topLeft: 5,
+//         topRight: 5
+//       })
+//     Text('今晚吃这个 | 每日艺术分享 No.43')
+//       .fontWeight(600)
+//       .fontSize(14)
+//       .lineHeight(22)
+//       .height(60)
+//
+//     // 底部
+//     Row() {
+//       // 头像、昵称
+//       Row({ space: 5 }) {
+//         Image($r('app.media.user'))
+//           .width(16)
+//           .borderRadius(8)
+//         Text('插画师分享聚集地')
+//           .fontSize(10)
+//           .fontColor('#999')
+//       }
+//       .layoutWeight(1)
+//
+//       // 点赞图标、点赞数
+//       Row({ space: 5}) {
+//         Image($r('app.media.ic_like'))
+//           .width(12)
+//           .fillColor('#999')
+//         Text('2300')
+//           .fontSize(10)
+//           .fontColor('#666')
+//       }
+//     }
+//     .padding({ left: 15, right: 15 })
+//   }
+//   .width(200)
+//   .padding({ bottom: 15 })
+//   .backgroundColor(Color.White)
+//   .borderRadius(5)
+// }
+// .padding(10)
+// .width('100%')
+// .height('100%')
+// .backgroundColor('#ccc')
 // Column() {
 //   // layoutWeight 自适应伸缩: 按照[份数权重]，分配[剩余空间]
 //   Row() {
