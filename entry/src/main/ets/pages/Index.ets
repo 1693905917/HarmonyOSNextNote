@@ -119,32 +119,34 @@ struct Index {
   @State message: string = 'Hello World';
 
   build() {
-    // 层叠布局
-    Stack({
-      alignContent: Alignment.Bottom
-    }) {
-      Text('大儿子')
-        .width(250)
-        .height(250)
-        .backgroundColor(Color.Green)
-        .zIndex(3)
-      Text('二儿子')
-        .width(150)
-        .height(150)
-        .backgroundColor(Color.Orange)
-        .zIndex(4)
-      Text('三儿子')
-        .width(50)
-        .height(50)
-        .backgroundColor(Color.Yellow)
-        .zIndex(5)
-    }
-    .width(300)
-    .height(600)
-    .backgroundColor(Color.Pink)
+
   }
 
 }
+// // 层叠布局
+//     // Stack({
+//     //   alignContent: Alignment.Bottom
+//     // }) {
+//     //   Text('大儿子')
+//     //     .width(250)
+//     //     .height(250)
+//     //     .backgroundColor(Color.Green)
+//     //     .zIndex(3)
+//     //   Text('二儿子')
+//     //     .width(150)
+//     //     .height(150)
+//     //     .backgroundColor(Color.Orange)
+//     //     .zIndex(4)
+//     //   Text('三儿子')
+//     //     .width(50)
+//     //     .height(50)
+//     //     .backgroundColor(Color.Yellow)
+//     //     .zIndex(5)
+//     // }
+//     // .width(300)
+//     // .height(600)
+//     // .backgroundColor(Color.Pink)
+
 // // position绝对定位：可以控制组件位置，可以实现层叠效果
 // // 语法：
 // // .position({
