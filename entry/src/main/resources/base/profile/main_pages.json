@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/JD_LoginPage"
+    "pages/JD_LoginPage",
+    "pages/MOCOPage"
   ]
 }
