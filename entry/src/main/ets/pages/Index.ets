@@ -160,21 +160,41 @@
 // console.log('parseFloat', parseFloat(str3)) // 1.99
 // console.log('parseFloat', parseFloat(str4)) // NaN
 // 数字通常用于计算, 字符串通常用于展示
-let money: number = 10000
-// 将数字转字符串, toString()  toFixed()
-// 1. 数据.toString() 原样转字符串
-console.log('toString:', money.toString())
-
-// 2. 数据.toFixed(保留几位小数)  四舍五入
-console.log('toFixed:', money.toFixed())
-console.log('toFixed:', money.toFixed(2))
+// let money: number = 10000
+// // 将数字转字符串, toString()  toFixed()
+// // 1. 数据.toString() 原样转字符串
+// console.log('toString:', money.toString())
+//
+// // 2. 数据.toFixed(保留几位小数)  四舍五入
+// console.log('toFixed:', money.toFixed())
+// console.log('toFixed:', money.toFixed(2))
 @Entry
 @Component
 struct Index {
   @State message: string = 'Hello World';
 
   build() {
-
+    Row() {
+      Column() {
+        Button('点我,显示对话框')
+          .onClick(() => {
+            // console.log('消息:', '你好点击事件')
+            // 弹个框
+            AlertDialog.show({
+              message: '你好~ 这是个弹框'
+            })
+          })
+        Text('我是文本')
+          .onClick(() => {
+            // 弹个框
+            AlertDialog.show({
+              message: '你好~ 我是文本组件'
+            })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 
 }
