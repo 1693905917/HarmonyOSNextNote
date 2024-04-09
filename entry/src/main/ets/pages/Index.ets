@@ -111,8 +111,23 @@
 // //2.给变量设定枚举类型
 // let color:ThemeColor =ThemeColor.Red;// console.log('主页颜色',color);
 
+// // 字符串拼接 + 拼串
+// let name: string = '吕布'
+// let age: number = 18
+// console.log('简介信息:', '姓名' + name)
+// console.log('简介信息:', '年纪' + age)
+//
+// // 注意点: + 两边只要有字符串, 就是拼串的作用 (如果两边都是数字, 就是计算求和的作用)
+// let num1: number = 100
+// let num2: number = 200
+// console.log('总数', num1 + num2)
+//模板字符串 `` (支持变量, 更利于字符串拼接)    普通字符串 ''  ""
+let str: string = `hello world`
 
-
+let name: string = '成小龙'
+let age: number = 18
+let hobby: string = '打拳'
+console.log('简介信息', `姓名: ${name}, 年纪: ${age}岁, 爱好: ${hobby}`)
 @Entry
 @Component
 struct Index {
