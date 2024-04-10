@@ -174,34 +174,52 @@
 // 2. 状态变量, 被装饰器修饰, 值的改变, 会 [自动] 引起 界面的刷新
 
 // 组件外的[普通变量] 不需要this即可访问
-let myName: string = '吕布'
+// let myName: string = '吕布'
 
 @Entry
 @Component
 struct Index {
-  // 组件内的[普通变量] this.xxx
-  myAge: number = 18
-
-  // 组件内的[状态变量] this.xxx
-  @State myMsg: string = 'hello 黑马'
+  // [组件的]状态变量  this.xxx
+  @State count: number = 1
 
   build() {
-    Column() {
-      Text(myName).onClick(() => {
-        myName = '貂蝉'
-        console.log('myName', myName)
-      })
-      Text(this.myAge.toString()).onClick(() => {
-        this.myAge = 200
-        console.log('myAge', this.myAge)
-      })
-      Text(this.myMsg).onClick(() => {
-        this.myMsg = '你好 状态'
-      })
+    Row() {
+      Button('-')
+        .onClick(() => {
+          this.count = this.count - 1
+        })
+      Text(this.count.toString()).margin(10)
+      Button('+')
+        .onClick(() => {
+          // 只要修改了状态变量, 自动触发界面(视图)的更新
+          this.count = this.count + 1
+        })
     }
+    .padding(20)
   }
-
 }
+// // 组件内的[普通变量] this.xxx
+// myAge: number = 18
+//
+// // 组件内的[状态变量] this.xxx
+// @State myMsg: string = 'hello 黑马'
+//
+// build() {
+//   Column() {
+//     Text(myName).onClick(() => {
+//       myName = '貂蝉'
+//       console.log('myName', myName)
+//     })
+//     Text(this.myAge.toString()).onClick(() => {
+//       this.myAge = 200
+//       console.log('myAge', this.myAge)
+//     })
+//     Text(this.myMsg).onClick(() => {
+//       this.myMsg = '你好 状态'
+//     })
+//   }
+// }
+
 // Row() {
 //   Column() {
 //     Button('点我,显示对话框')
