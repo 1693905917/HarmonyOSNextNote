@@ -168,36 +168,61 @@
 // // 2. 数据.toFixed(保留几位小数)  四舍五入
 // console.log('toFixed:', money.toFixed())
 // console.log('toFixed:', money.toFixed(2))
+
+// 注意点:
+// 1. 普通变量, 只能在初始化时渲染, 后续变化了, 也不会引起更新
+// 2. 状态变量, 被装饰器修饰, 值的改变, 会 [自动] 引起 界面的刷新
+
+// 组件外的[普通变量] 不需要this即可访问
+let myName: string = '吕布'
+
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  // 组件内的[普通变量] this.xxx
+  myAge: number = 18
+
+  // 组件内的[状态变量] this.xxx
+  @State myMsg: string = 'hello 黑马'
 
   build() {
-    Row() {
-      Column() {
-        Button('点我,显示对话框')
-          .onClick(() => {
-            // console.log('消息:', '你好点击事件')
-            // 弹个框
-            AlertDialog.show({
-              message: '你好~ 这是个弹框'
-            })
-          })
-        Text('我是文本')
-          .onClick(() => {
-            // 弹个框
-            AlertDialog.show({
-              message: '你好~ 我是文本组件'
-            })
-          })
-      }
-      .width('100%')
+    Column() {
+      Text(myName).onClick(() => {
+        myName = '貂蝉'
+        console.log('myName', myName)
+      })
+      Text(this.myAge.toString()).onClick(() => {
+        this.myAge = 200
+        console.log('myAge', this.myAge)
+      })
+      Text(this.myMsg).onClick(() => {
+        this.myMsg = '你好 状态'
+      })
     }
-    .height('100%')
   }
 
 }
+// Row() {
+//   Column() {
+//     Button('点我,显示对话框')
+//       .onClick(() => {
+//         // console.log('消息:', '你好点击事件')
+//         // 弹个框
+//         AlertDialog.show({
+//           message: '你好~ 这是个弹框'
+//         })
+//       })
+//     Text('我是文本')
+//       .onClick(() => {
+//         // 弹个框
+//         AlertDialog.show({
+//           message: '你好~ 我是文本组件'
+//         })
+//       })
+//   }
+//   .width('100%')
+// }
+// .height('100%')
 // // 层叠布局
 //     // Stack({
 //     //   alignContent: Alignment.Bottom
