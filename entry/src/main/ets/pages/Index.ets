@@ -192,50 +192,88 @@
 // let num2: number = 199
 // num2 %= 100 // num2 = num2 % 100
 // console.log('num2', num2)
+// 一元运算符(++  --)
+// ++ 作用: 让变量,在原本基础之上加1
+// let num: number = 10
+// // num++ // 先赋值,后自增
+// // ++num // 先自增,后赋值
+// console.log('num', num)
 
+// let num1: number = 10
+// let res1: number = num1++
+// console.log('res1', res1) // 10
+// console.log('num1', num1) // 11
+//
+// let num2: number = 10
+// let res2: number = ++num2
+// console.log('res2', res2) // 11
+// console.log('num2', num2) // 11
+//
+// let num2: number = 10
+// let res2: number = --num2
+// console.log('res2', res2) // 9
+// console.log('num2', num2) // 9
+
+// 比较运算符 >  <   >=  <=   ==  !=
+// let num1: number = 11
+// let num2: number = 11
+// console.log('判断结果', num1 > num2) // false
+// console.log('判断结果', num1 < num2) // false
+// console.log('判断结果', num1 >= num2) // true
+
+// == != 判断是否相等(判断数字, 也会用来判断字符串)
+// let num1: number = 200
+// let num2: number = 201
+// console.log('判断结果', num1 == num2)
+
+// 判断密码是否正确
+// let password: string = '123456'
+// let password2: string = '123456'
+// console.log('判断结果', password == password2)
 @Entry
 @Component
 struct Index {
-  // 声明状态 颜色 点赞数
-  @State myColor: string = '#7e7e7e'
-  @State myCount: number = 8888
 
   build() {
-    Column() {
-      Column({ space: 8}) {
-        // 图片
-        Image($r('app.media.eyes')).width('100%').borderRadius({topLeft: 6, topRight: 6})
-        // 标题文字
-        Text('考眼力又来了你能看到几只鸭子？')
-          .fontSize(14).lineHeight(18).padding({left: 5, right: 5})
-        // 来源和点赞
-        Row(){
-          Text() {
-            ImageSpan($r('app.media.avatar'))
-              .width(16).margin({right: 3})
-            Span('视野联行眼镜')
-              .fontSize(12).fontColor('#7e7e7e')
-          }
-          Row() {
-            Image($r('app.media.ic_love'))
-              .margin({right: 3}).width(14).fillColor(this.myColor)
-            Text(this.myCount.toString()).fontSize(12).fontColor(this.myColor)
-          }
-          .onClick(() => {
-            // 修改数字
-            this.myCount += 1
-            // 修改颜色
-            this.myColor = '#ff0000'
-          })
-        }
-        .width('100%').justifyContent(FlexAlign.SpaceBetween).padding({left: 5, right: 5})
-      }
-      .width('50%')
-    }
-    .padding(20)
+
   }
 }
+// // 声明状态 颜色 点赞数
+// @State myColor: string = '#7e7e7e'
+// @State myCount: number = 8888
 
+// Column() {
+//   Column({ space: 8}) {
+//     // 图片
+//     Image($r('app.media.eyes')).width('100%').borderRadius({topLeft: 6, topRight: 6})
+//     // 标题文字
+//     Text('考眼力又来了你能看到几只鸭子？')
+//       .fontSize(14).lineHeight(18).padding({left: 5, right: 5})
+//     // 来源和点赞
+//     Row(){
+//       Text() {
+//         ImageSpan($r('app.media.avatar'))
+//           .width(16).margin({right: 3})
+//         Span('视野联行眼镜')
+//           .fontSize(12).fontColor('#7e7e7e')
+//       }
+//       Row() {
+//         Image($r('app.media.ic_love'))
+//           .margin({right: 3}).width(14).fillColor(this.myColor)
+//         Text(this.myCount.toString()).fontSize(12).fontColor(this.myColor)
+//       }
+//       .onClick(() => {
+//         // 修改数字
+//         this.myCount += 1
+//         // 修改颜色
+//         this.myColor = '#ff0000'
+//       })
+//     }
+//     .width('100%').justifyContent(FlexAlign.SpaceBetween).padding({left: 5, right: 5})
+//   }
+//   .width('50%')
+// }
+// .padding(20)
 // // [组件的]状态变量  this.xxx
 // @State count: number = 1
 //   Row() {
