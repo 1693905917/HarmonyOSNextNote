@@ -176,12 +176,12 @@
 // 组件外的[普通变量] 不需要this即可访问
 // let myName: string = '吕布'
 // 算数运算符 + - * / %
-console.log('计算结果', 1 + 1)
-console.log('计算结果', 2 - 1)
-console.log('计算结果', 3 * 5)
-console.log('计算结果', 9 / 3)
-console.log('取余', 9 % 2) // 4余1
-console.log('取余', 9 % 5) // 1余4
+// console.log('计算结果', 1 + 1)
+// console.log('计算结果', 2 - 1)
+// console.log('计算结果', 3 * 5)
+// console.log('计算结果', 9 / 3)
+// console.log('取余', 9 % 2) // 4余1
+// console.log('取余', 9 % 5) // 1余4
 
 // 赋值运算符 =
 // +=  -=  *=  /=  %= (本质就是一个简写, 对变量本身进行计算, 计算完再赋值回来)
@@ -189,20 +189,55 @@ console.log('取余', 9 % 5) // 1余4
 // num *= 2 // num = num * 2
 // console.log('num', num)
 
-let num2: number = 199
-num2 %= 100 // num2 = num2 % 100
-console.log('num2', num2)
+// let num2: number = 199
+// num2 %= 100 // num2 = num2 % 100
+// console.log('num2', num2)
 
 @Entry
 @Component
 struct Index {
-  // [组件的]状态变量  this.xxx
-  @State count: number = 1
+  // 声明状态 颜色 点赞数
+  @State myColor: string = '#7e7e7e'
+  @State myCount: number = 8888
 
   build() {
-
+    Column() {
+      Column({ space: 8}) {
+        // 图片
+        Image($r('app.media.eyes')).width('100%').borderRadius({topLeft: 6, topRight: 6})
+        // 标题文字
+        Text('考眼力又来了你能看到几只鸭子？')
+          .fontSize(14).lineHeight(18).padding({left: 5, right: 5})
+        // 来源和点赞
+        Row(){
+          Text() {
+            ImageSpan($r('app.media.avatar'))
+              .width(16).margin({right: 3})
+            Span('视野联行眼镜')
+              .fontSize(12).fontColor('#7e7e7e')
+          }
+          Row() {
+            Image($r('app.media.ic_love'))
+              .margin({right: 3}).width(14).fillColor(this.myColor)
+            Text(this.myCount.toString()).fontSize(12).fontColor(this.myColor)
+          }
+          .onClick(() => {
+            // 修改数字
+            this.myCount += 1
+            // 修改颜色
+            this.myColor = '#ff0000'
+          })
+        }
+        .width('100%').justifyContent(FlexAlign.SpaceBetween).padding({left: 5, right: 5})
+      }
+      .width('50%')
+    }
+    .padding(20)
   }
 }
+
+// // [组件的]状态变量  this.xxx
+// @State count: number = 1
 //   Row() {
 //     Button('-')
 //       .onClick(() => {
