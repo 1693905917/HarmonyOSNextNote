@@ -322,21 +322,33 @@
 //   console.log('评价:', '不及格')
 // }
 // 输入水果名称, 查询价格 (精确匹配)
-let fruit: string = '榴莲'
+// let fruit: string = '榴莲'
+//
+// switch (fruit) {
+//   case '苹果':
+//     console.log('苹果价格:', '2.8元一斤')
+//     break
+//   case '香蕉':
+//     console.log('香蕉价格:', '5.5元一斤')
+//     break
+//   case '西瓜':
+//     console.log('西瓜价格:', '1.5元一斤')
+//     break
+//   default:
+//     console.log('提示:', '尊敬的用户, 该水果不存在')
+// }
 
-switch (fruit) {
-  case '苹果':
-    console.log('苹果价格:', '2.8元一斤')
-    break
-  case '香蕉':
-    console.log('香蕉价格:', '5.5元一斤')
-    break
-  case '西瓜':
-    console.log('西瓜价格:', '1.5元一斤')
-    break
-  default:
-    console.log('提示:', '尊敬的用户, 该水果不存在')
-}
+// 三元条件表达式
+// 语法: 条件 ? 条件成立执行的表达式 : 条件不成立执行的表达式
+
+let num1: number = 40
+let num2: number = 30
+
+// let max: number = num1 > num2 ? num1 : num2
+// console.log('三元条件表达式', max)
+
+let res: number = num1 > num2 ? 3 * 5 : 2 + 6
+console.log('三元条件表达式', res)
 @Entry
 @Component
 struct Index {
