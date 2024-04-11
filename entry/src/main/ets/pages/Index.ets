@@ -230,136 +230,72 @@
 // let password: string = '123456'
 // let password2: string = '123456'
 // console.log('判断结果', password == password2)
+
+// 1. 定义一个数组
+// let names: string[] = ['刘小备', '吕小布', '张大飞']
+// console.log('整个数组',names)
+//
+// // 2. 数组取值(通过下标)
+// console.log('数组取值', names[1])
+// console.log('数组长度', names.length)
+//
+// // 3. 数组修改(通过下标)
+// names[2] = '赵云'
+// console.log('修改数组', names)
+//
+// // 定义一个数组
+// let songs: string[] = ['告白气球', '洋葱', '吻别']
+
+// 添加
+// 1. 往开头新增 unshift(新增的值)  返回操作后的数组的长度
+// songs.unshift('彩虹')
+// console.log('返回数组长度', songs.unshift('七里香'))
+// console.log('数组songs', songs)
+
+// 2. 往结尾新增 push(新增的值)  返回操作后的数组的长度
+// songs.push('光辉岁月', '海阔天空')
+// console.log('数组', songs)
+
+// 删除
+// 1. 从开头删 shift
+// console.log('返回删除的项', songs.shift())
+// console.log('返回删除的项', songs.shift())
+// console.log('数组', songs)
+
+// 2. 从结尾删 pop
+// songs.pop()
+// songs.pop()
+// songs.pop()
+// console.log('数组', songs)
+
+// 开头(S): unshift(开头增)  shift(开头删)
+// 结尾(P): push(结尾增)  pop(结尾删)
+
+// 定义一个数组
+// let songs: string[] = ['告白气球', '洋葱', '吻别', '双节棍', '曹操']
+// splice 在任意位置进行删除或新增内容
+// 数组名.splice(操作的起始位置, 删除几个, 新增的项1, 新增的项2, ...)
+
+// 1. 删除(任意位置)
+// songs.splice(2, 2)
+// console.log('数组songs', songs)
+
+// 2. 新增(任意位置)
+// songs.splice(1, 0, '彩虹') // 新增
+
+// 3. 替换(删了一项, 又加了一项)
+// songs.splice(1, 1, '彩虹')
+// console.log('数组songs', songs)
+
 @Entry
 @Component
 struct Index {
-  // 核心思路:
-  // 1. 提取状态: 数量, 原价, 现价
-  // 2. 结合状态渲染
-  // 3. 修改状态, 界面自动更新
-  @State count: number = 5
-  @State oldPrice: number = 40.4
-  @State newPrice: number = 10.4
+
   build() {
     Column() {
-      Column() {
-        // 产品
-        Row({ space: 10}){
-          // 图片
-          Image($r('app.media.product1'))
-            .width(100)
-            .borderRadius(8)
-          // 文字
-          Column({space: 10}) {
-            Column({ space: 6}) {
-              Text('冲销量1000ml缤纷八果水果捞')
-                .lineHeight(20)
-                .fontSize(14)
-              Text('含1份折扣商品')
-                .fontSize(12)
-                .fontColor('#7f7f7f')
-            }
-            .width('100%')
-            .alignItems(HorizontalAlign.Start)
-            Row(){
-              // 价格
-              Row({ space: 5}) {
-                Text() {
-                  Span('￥')
-                    .fontSize(14)
-                  Span(this.newPrice.toFixed(2))
-                    .fontSize(18)
-                }
-                .fontColor('#ff4000')
-                Text() {
-                  Span('￥')
-                  Span(this.oldPrice.toFixed(2))
-                }
-                .fontSize(14)
-                .fontColor('#999')
-                .decoration({type: TextDecorationType.LineThrough, color: '#999'})
-              }
-              // 加减
-              Row() {
-                Text('-')
-                  .width(22)
-                  .height(22)
-                  .border({width:1, color: '#e1e1e1', radius: {topLeft: 5, bottomLeft: 5}})
-                  .textAlign(TextAlign.Center)
-                  .fontWeight(700)
-                  .onClick(() => {
-                    // this.count = this.count - 1
-                    // 让状态变量,在原有数据的基础上自减1
-                    this.count--
-                  })
-                Text(this.count.toString())
-                  .height(22)
-                  .border({width: { top:1, bottom: 1 }, color: '#e1e1e1'})
-                  .padding({left: 10, right: 10})
-                  .fontSize(14)
-                Text('+')
-                  .width(22)
-                  .height(22)
-                  .border({width:1, color: '#e1e1e1', radius: {topRight: 5, bottomRight: 5}})
-                  .textAlign(TextAlign.Center)
-                  .fontWeight(700)
-                  .onClick(() => {
-                    this.count++
-                  })
-              }
-            }
-            .width('100%')
-            .justifyContent(FlexAlign.SpaceBetween)
-          }
-          .height(75)
-          .layoutWeight(1)
-          .justifyContent(FlexAlign.SpaceBetween)
-        }
-        .width('100%')
-        .alignItems(VerticalAlign.Top)
-        .padding(20)
 
-        // 结算
-        Row({ space: 10 }){
-          // 价格
-          Column({space: 5}) {
-            Text() {
-              Span(`已选 ${this.count} 件，`)
-                .fontColor('#848484')
-              Span('合计:')
-              Span('￥')
-                .fontColor('#fd4104')
-              Span((this.count * this.newPrice).toFixed(2))
-                .fontColor('#fd4104')
-                .fontSize(16)
-            }
-            .fontSize(14)
-            Text('共减￥' + (this.count * (this.oldPrice - this.newPrice)).toFixed(2))
-              .fontColor('#fd4104')
-              .fontSize(12)
-          }
-          .alignItems(HorizontalAlign.End)
-          // 结算按钮
-          Button('结算外卖')
-            .width(110)
-            .height(40)
-            .backgroundColor('#fed70e')
-            .fontColor('#564200')
-            .fontSize(16)
-            .fontWeight(600)
-        }
-        .width('100%')
-        .height(70)
-        .backgroundColor('#fff')
-        .position({x:0, y: '100%'})
-        .translate({y: '-100%'})
-        .padding({ left: 20, right: 20 })
-        .justifyContent(FlexAlign.End)
-      }
     }
-    .width('100%')
-    .height('100%')
-    .backgroundColor('#f3f3f3')
+
   }
 }
 // // 声明状态 颜色 点赞数

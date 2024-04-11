@@ -4,6 +4,7 @@
     "pages/JD_LoginPage",
     "pages/MOCOPage",
     "pages/BiliPage",
-    "pages/AlipayPage"
+    "pages/AlipayPage",
+    "pages/MeiTuanPage"
   ]
 }
