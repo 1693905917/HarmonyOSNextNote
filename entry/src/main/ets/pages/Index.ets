@@ -350,122 +350,233 @@
 // let res: number = num1 > num2 ? 3 * 5 : 2 + 6
 // console.log('三元条件表达式', res)
 // @Entry
+// while循环: 可以重复的执行一段代码
+// while (条件) {
+//   需要循环执行的语句
+// }
+
+// 死循环: 没有结束条件
+// while (true) {
+//   console.log('while', '重复执行的代码')
+// }
+
+// 实际开发真正需要的, 有次数的循环
+// 三要素: 变量初始值; 判断条件; 变化量(变量要变)
+// let i: number = 1
+// while (i < 10) {
+//   console.log('小于10成立', '执行代码', i) // 9
+//   i++ // 10
+// }
+
+// 需求1: 打印1-100的数字,  1, 2, 3, 4, 5 ... 100
+// 三要素: 变量起始值; 判断条件; 变化量;
+// let i: number = 1
+// while (i <= 100) {
+//   console.log('i的值:', i)
+//   i++
+// }
+
+// let i: number = 100
+// while (i >= 1) {
+//   console.log('i的值:', i)
+//   i--
+// }
+
+// 需求2: 打印 1-100 中的偶数
+// let i: number = 1
+// while (i <= 100) {
+//   if (i % 2 === 0) {
+//     console.log('i的值:', i)
+//   }
+//   i++
+// }
+
+// 需求3: 计算 1-10 的数字的 累加和,  1 + 2 + 3 + 4 + 5 ... + 10
+// 三要素: 变量起始值; 判断条件; 变化量;
+// let i: number = 1
+// let sum: number = 0 // 存储累加的结果
+//
+// while (i <= 10) {
+//   console.log('需要累加的数字:', i)
+//   // 每次执行下面这行代码, 就会进行一次累加, 并且更新累加的结果
+//   sum = sum + i
+//   i++
+// }
+// console.log('累加结果:', sum)
+// for (初始值; 循环条件; 变化量) {
+//   重复执行的代码(循环体)
+// }
+
+// 需求: 打印 1-10 →  从 1 开始, 循环到 10 结束
+// for (let i: number = 1; i <= 10; i++) {
+//   console.log('for循环', i)
+// }
+
+
+// 1-10的和, 从1开始,循环到10
+// let sum = 0
+// for (let i: number = 1; i <= 10; i++) {
+//   console.log('for', i)
+//   sum = sum + i // sum += i
+// }
+// console.log('求和', sum)
+
+// 退出循环:
+// 1. break: 终止整个循环 (后面的循环不执行了)
+// 2. continue: 退出当前这一次循环, 继续执行下一次循环 (包子当前这个不吃了, 吃下一个)
+
+// 1. 一共8个包子, 吃到第5个, 饱了
+// for (let i: number = 1; i <= 8; i++) {
+//   if (i == 5) {
+//     console.log('拿起了第5个包子, 发现吃不动了')
+//     // 终止当前的循环 (本次循环后面的代码不执行了, 且后续循环的代码也不执行了, 跳出循环)
+//     break
+//   }
+//   console.log('吃包子:', `第${i}个`)
+// }
+//
+// console.log('这是循环外的代码')
+
+
+// 2. 一个8个包子, 吃到第5个, 坏了
+// for (let i: number = 1; i <= 8; i++) {
+//   if (i == 5) {
+//     console.log('拿起了第5个包子, 发现坏了')
+//     // 当前这次循环不继续执行了, 继续执行下一次循环
+//     continue
+//   }
+//   console.log('吃包子:', `第${i}个`)
+// }
+//
+// console.log('这是循环外的代码')
+
+// 遍历数组: 利用循环, 依次按顺序访问数组的每一项
+// let names: string[] = ['大强', '老莫', '小龙', '大黑', '小黄']
+//
+// // 数组的最后一项 names[names.length - 1]
+// // for (let i: number = 0; i < names.length; i++) {
+// //   console.log('名字是', names[i])
+// // }
+//
+// for (let item of names) {
+//   console.log('数组中的每一项', item)
+// }
 
 @Entry
 @Component
 struct Index {
   // 库存, 有库存 > 0
-  @State count: number = 2  // 无库存
+  @State count: number = 0  // 无库存
 
   build() {
-    Column() {
-      Column() {
-        // 底部菜单
-        Row({space: 10}) {
-          // 左侧菜单
-          Row() {
-            Column({space: 5}) {
-              Image($r('app.media.ic_dianpu'))
-                .width(20)
-              Text('店铺')
-                .fontSize(10)
-                .fontColor('#262626')
-            }
-            Column({space: 5}) {
-              Image($r('app.media.ic_kefu'))
-                .width(20)
-                .fillColor('#666')
-              Text('客服')
-                .fontSize(10)
-                .fontColor('#262626')
-            }
-            Column({space: 5}) {
-              Image($r('app.media.ic_cart2'))
-                .width(20)
-                .fillColor('#666')
-              Text('购物车')
-                .fontSize(10)
-                .fontColor('#262626')
-            }
-          }
-          .layoutWeight(1)
-          .justifyContent(FlexAlign.SpaceBetween)
 
-          // 根据库存控制不同按钮的展示
-          if (this.count > 0) {
-            // 右侧按钮 -- 可以购买
-            Row({space: 5}) {
-              Button('加入购物车')
-                .width(105)
-                .height(40)
-                .backgroundColor('#ffcc00')
-                .fontSize(14)
-                .fontWeight(600)
-              Button('立即购买')
-                .width(105)
-                .height(40)
-                .backgroundColor('#f92c1b')
-                .fontSize(14)
-                .fontWeight(600)
-            }
-          }
-          else {
-            // 右侧按钮 -- 不能购买
-            Row() {
-              Button('查看类似商品')
-                .width(170)
-                .height(40)
-                .backgroundColor('#ffcc00')
-                .fontSize(14)
-                .fontWeight(600)
-            }
-          }
-        }
-        .width('100%')
-        .height(60)
-        .backgroundColor('#f7f7f7')
-        .padding({left: 20, right: 10})
-
-        // 消息提示：库存 <= 0 显示，否则隐藏
-        if (this.count <= 0) {
-          Row() {
-            // 左侧
-            Row({ space: 5 }) {
-              Image($r('app.media.ic_lingdang'))
-                .width(12)
-                .fillColor('#de6a1c')
-              Text('该商品暂时没有库存，看看相似商品吧')
-                .fontSize(10)
-                .fontColor('#de6a1c')
-            }
-
-            // 右侧
-            Image($r('app.media.ic_shangjiantou'))
-              .width(15)
-              .padding(3)
-              .fillColor('#d0662c')
-              .backgroundColor('rgba(0,0,0,0.1)')
-              .borderRadius(8)
-          }
-          .width('100%')
-          .height(36)
-          .backgroundColor('#fbf9da')
-          .position({ x: 0, y: '-36' })
-          .padding({ left: 20, right: 20 })
-          .justifyContent(FlexAlign.SpaceBetween)
-        }
-
-      }
-      .position({x:0,y:'100%'})
-      .translate({y: '-100%'})
-    }
-    .width('100%')
-    .height('100%')
-    .padding({bottom:20})
-    .backgroundColor('#f2f2f2')
   }
 }
-
+// Column() {
+//   Column() {
+//     // 底部菜单
+//     Row({space: 10}) {
+//       // 左侧菜单
+//       Row() {
+//         Column({space: 5}) {
+//           Image($r('app.media.ic_dianpu'))
+//             .width(20)
+//           Text('店铺')
+//             .fontSize(10)
+//             .fontColor('#262626')
+//         }
+//         Column({space: 5}) {
+//           Image($r('app.media.ic_kefu'))
+//             .width(20)
+//             .fillColor('#666')
+//           Text('客服')
+//             .fontSize(10)
+//             .fontColor('#262626')
+//         }
+//         Column({space: 5}) {
+//           Image($r('app.media.ic_cart2'))
+//             .width(20)
+//             .fillColor('#666')
+//           Text('购物车')
+//             .fontSize(10)
+//             .fontColor('#262626')
+//         }
+//       }
+//       .layoutWeight(1)
+//       .justifyContent(FlexAlign.SpaceBetween)
+//
+//       // 根据库存控制不同按钮的展示
+//       if (this.count > 0) {
+//         // 右侧按钮 -- 可以购买
+//         Row({space: 5}) {
+//           Button('加入购物车')
+//             .width(105)
+//             .height(40)
+//             .backgroundColor('#ffcc00')
+//             .fontSize(14)
+//             .fontWeight(600)
+//           Button('立即购买')
+//             .width(105)
+//             .height(40)
+//             .backgroundColor('#f92c1b')
+//             .fontSize(14)
+//             .fontWeight(600)
+//         }
+//       }
+//       else {
+//         // 右侧按钮 -- 不能购买
+//         Row() {
+//           Button('查看类似商品')
+//             .width(170)
+//             .height(40)
+//             .backgroundColor('#ffcc00')
+//             .fontSize(14)
+//             .fontWeight(600)
+//         }
+//       }
+//     }
+//     .width('100%')
+//     .height(60)
+//     .backgroundColor('#f7f7f7')
+//     .padding({left: 20, right: 10})
+//
+//     // 消息提示：库存 <= 0 显示，否则隐藏
+//     if (this.count <= 0) {
+//       Row() {
+//         // 左侧
+//         Row({ space: 5 }) {
+//           Image($r('app.media.ic_lingdang'))
+//             .width(12)
+//             .fillColor('#de6a1c')
+//           Text('该商品暂时没有库存，看看相似商品吧')
+//             .fontSize(10)
+//             .fontColor('#de6a1c')
+//         }
+//
+//         // 右侧
+//         Image($r('app.media.ic_shangjiantou'))
+//           .width(15)
+//           .padding(3)
+//           .fillColor('#d0662c')
+//           .backgroundColor('rgba(0,0,0,0.1)')
+//           .borderRadius(8)
+//       }
+//       .width('100%')
+//       .height(36)
+//       .backgroundColor('#fbf9da')
+//       .position({ x: 0, y: '-36' })
+//       .padding({ left: 20, right: 20 })
+//       .justifyContent(FlexAlign.SpaceBetween)
+//     }
+//
+//   }
+//   .position({x:0,y:'100%'})
+//   .translate({y: '-100%'})
+// }
+// .width('100%')
+// .height('100%')
+// .padding({bottom:20})
+// .backgroundColor('#f2f2f2')
 
 // @Entry
 // @Component
