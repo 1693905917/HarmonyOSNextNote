@@ -307,50 +307,83 @@
 // else {
 //   console.log('惩罚', '写个检讨, 分析出错原因')
 // }
+// let score: number = 35
+//
+// if (score >= 90) {
+//   console.log('评价:', '优秀')
+// }
+// else if (score >= 80) {
+//   console.log('评价:', '良好')
+// }
+// else if (score >= 60) {
+//   console.log('评价:', '及格')
+// }
+// else {
+//   console.log('评价:', '不及格')
+// }
+// 输入水果名称, 查询价格 (精确匹配)
+let fruit: string = '榴莲'
 
+switch (fruit) {
+  case '苹果':
+    console.log('苹果价格:', '2.8元一斤')
+    break
+  case '香蕉':
+    console.log('香蕉价格:', '5.5元一斤')
+    break
+  case '西瓜':
+    console.log('西瓜价格:', '1.5元一斤')
+    break
+  default:
+    console.log('提示:', '尊敬的用户, 该水果不存在')
+}
 @Entry
 @Component
 struct Index {
   @State count: number = 5
   build() {
-    Column() {
-      Row() {
-        Text('-')
-          .width(40)
-          .height(40)
-          .border({width: 2, color: '#999', radius: {topLeft: 3, bottomLeft:3}})
-          .textAlign(TextAlign.Center)
-          .onClick(() => {
-            // 如果数字大于1, 可以减
-            if (this.count > 1) {
-              this.count--
-            }
-            // 否则, 给个提示
-            else {
-              // console.log('提示', '最小值为1, 不能再减了')
-              AlertDialog.show({
-                message: '最小值为1, 不能再减了'
-              })
-            }
-          })
-        Text(this.count.toString())
-          .height(40)
-          .padding({left: 20, right: 20 })
-          .border({width: {top: 2, bottom: 2}, color: '#999'})
-          .fontSize(14)
-        Text('+')
-          .width(40)
-          .height(40)
-          .border({width: 2, color: '#999', radius: {topRight: 3, bottomRight: 3}})
-          .textAlign(TextAlign.Center)
-          .onClick(() => {
-            this.count++
-          })
-      }
+    Column(){
+
     }
-    .padding(20)
   }
 }
+// Column() {
+//   Row() {
+//     Text('-')
+//       .width(40)
+//       .height(40)
+//       .border({width: 2, color: '#999', radius: {topLeft: 3, bottomLeft:3}})
+//       .textAlign(TextAlign.Center)
+//       .onClick(() => {
+//         // 如果数字大于1, 可以减
+//         if (this.count > 1) {
+//           this.count--
+//         }
+//         // 否则, 给个提示
+//         else {
+//           // console.log('提示', '最小值为1, 不能再减了')
+//           AlertDialog.show({
+//             message: '最小值为1, 不能再减了'
+//           })
+//         }
+//       })
+//     Text(this.count.toString())
+//       .height(40)
+//       .padding({left: 20, right: 20 })
+//       .border({width: {top: 2, bottom: 2}, color: '#999'})
+//       .fontSize(14)
+//     Text('+')
+//       .width(40)
+//       .height(40)
+//       .border({width: 2, color: '#999', radius: {topRight: 3, bottomRight: 3}})
+//       .textAlign(TextAlign.Center)
+//       .onClick(() => {
+//         this.count++
+//       })
+//   }
+// }
+// .padding(20)
+
 // // 声明状态 颜色 点赞数
 // @State myColor: string = '#7e7e7e'
 // @State myCount: number = 8888
