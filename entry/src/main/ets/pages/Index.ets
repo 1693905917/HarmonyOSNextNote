@@ -286,16 +286,69 @@
 // 3. 替换(删了一项, 又加了一项)
 // songs.splice(1, 1, '彩虹')
 // console.log('数组songs', songs)
+// 分支语句 - if 语句
+// 1. 单分支 (满足条件, 就会执行一段代码)
+// if (逻辑条件) {
+//   条件成立时执行的代码
+// }
+// 2. 双分支 (满足条件, 会执行A代码, 不满足条件, 会执行B代码)
+// if (逻辑条件) {
+//   条件成立时执行的代码
+// }
+// else {
+//   条件不成立时执行的代码
+// }
+
+// let score: number = 92
+//
+// if (score >= 90) {
+//   console.log('奖励', '一台游戏机')
+// }
+// else {
+//   console.log('惩罚', '写个检讨, 分析出错原因')
+// }
 
 @Entry
 @Component
 struct Index {
-
+  @State count: number = 5
   build() {
     Column() {
-
+      Row() {
+        Text('-')
+          .width(40)
+          .height(40)
+          .border({width: 2, color: '#999', radius: {topLeft: 3, bottomLeft:3}})
+          .textAlign(TextAlign.Center)
+          .onClick(() => {
+            // 如果数字大于1, 可以减
+            if (this.count > 1) {
+              this.count--
+            }
+            // 否则, 给个提示
+            else {
+              // console.log('提示', '最小值为1, 不能再减了')
+              AlertDialog.show({
+                message: '最小值为1, 不能再减了'
+              })
+            }
+          })
+        Text(this.count.toString())
+          .height(40)
+          .padding({left: 20, right: 20 })
+          .border({width: {top: 2, bottom: 2}, color: '#999'})
+          .fontSize(14)
+        Text('+')
+          .width(40)
+          .height(40)
+          .border({width: 2, color: '#999', radius: {topRight: 3, bottomRight: 3}})
+          .textAlign(TextAlign.Center)
+          .onClick(() => {
+            this.count++
+          })
+      }
     }
-
+    .padding(20)
   }
 }
 // // 声明状态 颜色 点赞数
